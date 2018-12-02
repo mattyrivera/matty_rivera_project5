@@ -108,3 +108,16 @@ class App extends Component {
 }
 
 export default App;
+
+//create form submit for to do APP
+//set inital state
+//add functionality to form inputs
+//append/render TO-DO tasks to DOM
+//connect functionality of form to firebase database
+//connect firebase keys to functionality
+//create delete/completed button
+//connect completed functionality (delete button) to firebase (delete from DOM as well as firebase)
+//organize render into different sections
+//stretch goal = organize categories to be able to hide/view per category
+//style TO DO APP
+//stretch goal *firebase Auth / sign in as user/guest*
