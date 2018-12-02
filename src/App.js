@@ -82,14 +82,14 @@ class App extends Component {
       button.innerHTML = `Hide ${target}`;
       const cards = document.getElementsByClassName(target);
       for(let i = 0; i < cards.length; i++) {
-        cards[i].style.display = "block";
+        cards[i].classList.remove("hide");
       }
     } else {
       button.className += "hide-cat";
       button.innerHTML = `Show ${target}`;
       const cards = document.getElementsByClassName(target);
       for(let i = 0; i < cards.length; i++) {
-        cards[i].style.display = "none";
+        cards[i].classList.add("hide");
       }
     }
   }
@@ -97,6 +97,19 @@ class App extends Component {
   showForm = (event) => {
     const form = document.getElementById("newForm");
     form.classList.add("formShow");
+  }
+
+  showFilters = (event) => {
+    const showFilters = document.getElementById("buttonContainer");
+    const filterButton = event.target;
+
+    for (let i = 0; i < filterButton.classList.length; i++){
+      if(filterButton.classList[i] === "activeFilter"){
+        filterButton.classList.remove("activeFilter");
+      }else {
+        filterButton.classList.add("activeFilter");
+      }
+    }
   }
 
   render() {
@@ -107,7 +120,7 @@ class App extends Component {
             <div className="fixed">
               <div className="wrapper headerContainer">
                 <h1>taskMaster</h1>
-                <button onClick={this.showForm}><i class="fas fa-plus"></i>New Note</button>
+                <button onClick={this.showForm}><i className="fas fa-plus"></i>New Note</button>
               </div>
             </div>
           </header>
@@ -120,14 +133,17 @@ class App extends Component {
                 valTask={this.state.newToDo.task}
                 valCat={this.state.newToDo.category}
                 />
-              <div className="buttonContainer">
+              <div className="buttonFilterContainer">
+                <button className="filterButton" onClick={this.showFilters}>Show Filters</button>
+              </div>
+              <div id="buttonContainer" className="buttonContainer">
                 <button name="Personal" onClick={this.hideToDos} >Hide Personal</button>
                 <button name="Work" onClick={this.hideToDos} >Hide Work</button>
                 <button name="School" onClick={this.hideToDos} >Hide School</button>
                 <button name="Other" onClick={this.hideToDos} >Hide Other</button>
                 <button name="Chores" onClick={this.hideToDos}>Hide Chores</button>
               </div>
-              <div className="toDoConatiner" >
+              <div className="toDoContainer" >
                 {Object.entries(this.state.pastToDo).map((toDo, index) => {
                   // console.log(toDo[0]);
                   return (

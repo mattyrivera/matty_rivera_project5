@@ -7,22 +7,37 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 /* VARIABLES ----------------------- */
 
+:root {
+    --primary-color: #232323;
+    --accent-color: #fdc800;
+    --white-shade: #f8f8f8;
+    --background-color: #eaedf4;
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Poppins', sans-serif;
+}
+
+/* 'Josefin Sans', sans-serif; */
+
 /* GLOBAL Styles -------------------*/
 
 body{
     margin: 0;
-    font-family: sans-serif;
-    background: grey;
+    font-family: var(--primary-font);
+    /* background: grey; */
 }
 
 html {
     font-size: 62.5%;
 }
 
+main {
+    margin-top: 57px;
+}
+
 .wrapper {
     max-width: 1280px;
     width: 80%;
-    border: 2px solid tomato;
+    /* border: 2px solid tomato; */
     margin: 0 auto;
 }
 
@@ -31,18 +46,22 @@ html {
 
 header{
     background-color: tomato;
-    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
     z-index: 5;
 }
 
 header h1 {
     color: #fff;
+    font-family: var(--secondary-font);
 }
 
 .headerContainer{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: 10px;
 }
 
 header button {
@@ -61,28 +80,119 @@ header button {
     top: -400px;
     padding-bottom: 6px;
     transition: all 0.5s;
+    display: flex;
+    height: 0;
+    justify-content: center;
 }
 
 .formShow{
+    height: auto;
     top: 0;
     opacity: 1;
     padding: 25px 0;
-    background: papayawhip;
+    /* background: papayawhip; */
+}
+
+.formContainer.formShow {
+    margin-right: 10px;
+}
+
+/* hide labels on form */
+.hiddenLabel:not(:focus):not(:active) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 /* HIDE | SHOW BUTTONS Styles ------------------- */
 
+.buttonContainer{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .buttonContainer button {
-    padding: 10px 10px;
-    border: none;
+    color: pink;
+    border: 2px solid pink;
+    background: rgba(0,0,0,0);
+    padding: 10px 30px;
+    margin: 0 15px 15px;
+}
+
+.buttonContainer button:hover {
+    color: red;
+}
+
+
+/* TASKS Styles --------------------------------- */
+
+.toDoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: flex-start; */
+}
+
+.toDoCard {
+    width: calc(33.3% - (30px / 3));
+    margin-right: 10px;
+    background-color: rgb(202, 202, 247);    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 15px;
+    margin-bottom: 10px;
     border-radius: 5px;
 }
 
-.hide-cat {
-    background: red;
-    border: none;
-    border-radius: 5px;
+.hide {
+    display: none;
+}
+
+/* card colors */
+
+.School {
+    background: pink;
+}
+
+.Personal {
+    background: rgb(177, 221, 221);
+}
+
+.Work {
+    background: rgb(243, 243, 203);
+}
+
+.Other {
+    background: rgb(191, 224, 191);
+}
+
+.Chores {
+    background: rgb(240, 201, 240);
 }
 
 
+@media (max-width: 350px) {
+    /* main {
+        margin-top: 35px;
+    } */
 
+    .formContainer form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+}
