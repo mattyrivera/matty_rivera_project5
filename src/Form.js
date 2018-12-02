@@ -2,7 +2,7 @@ import React from 'react';
 
 const form = (props) => {
     return (
-        <div className="formContainer">
+        <div id="newForm" className="formContainer">
             <form onSubmit={props.submit} className="new-task" action="">
                 <label htmlFor="title">Title:</label>
                 <input onChange={props.change} type="text" id="title" name="title" value={props.valTitle} />
@@ -11,8 +11,9 @@ const form = (props) => {
                 <label htmlFor="category">Category:</label>
                 <select onChange={props.change} name="category" id="category" value={props.valCat} >
                     <option value="">--Select Category--</option>
-                    <option value="Work">Work</option>
                     <option value="Personal">Personal</option>
+                    <option value="Chores">Chores</option>
+                    <option value="Work">Work</option>
                     <option value="School">School</option>
                     <option value="Other">Other</option>
                 </select>

@@ -92,14 +92,21 @@ class App extends Component {
         cards[i].style.display = "none";
       }
     }
+  }
 
+  showForm = (event) => {
+    const form = document.getElementById("newForm");
+    form.classList.add("form-show");
   }
 
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>TO DO LIST</h1>
+        <header className="appHeader">
+          <div className="wrapper header-container">
+            <h1>TO DO LIST</h1>
+            <button onClick={this.showForm}><i class="fas fa-plus"></i>New Note</button>
+          </div>
         </header>
         <main>
           <div className="wrapper">
@@ -108,6 +115,7 @@ class App extends Component {
               <button name="Work" onClick={this.hideToDos} >Hide Work</button>
               <button name="School" onClick={this.hideToDos} >Hide School</button>
               <button name="Other" onClick={this.hideToDos} >Hide Other</button>
+              <button name="Chores" onClick={this.hideToDos}>Hide Chores</button>
             </div>
             <Form
               submit={this.formSubmitted}
