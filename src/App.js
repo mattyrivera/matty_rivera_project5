@@ -71,10 +71,28 @@ class App extends Component {
   }
 
   hideToDos = (event) => {
-    console.log(event.target.name);
-    console.log(event.target);
+    // console.log(event.target.name);
+    // console.log(event.target);
     const target = event.target.name;
-    event.target.innerHTML = `Show ${target}`
+    const button = event.target;
+    console.log(button.classList);
+
+    if(button.className === "hide-cat") {
+      button.className = "";
+      button.innerHTML = `Hide ${target}`;
+      const cards = document.getElementsByClassName(target);
+      for(let i = 0; i < cards.length; i++) {
+        cards[i].style.display = "block";
+      }
+    } else {
+      button.className += "hide-cat";
+      button.innerHTML = `Show ${target}`;
+      const cards = document.getElementsByClassName(target);
+      for(let i = 0; i < cards.length; i++) {
+        cards[i].style.display = "none";
+      }
+    }
+
   }
 
   render() {
