@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import firebase from "./firebase";
+
+const dbRef = firebase.database().ref();
 
 class App extends Component {
   constructor() {
@@ -15,8 +18,19 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log("i mounted");
+    dbRef.on("value", (response) => {
+      const newPastToDo = response.val() === null ? {} : response.val();
+
+      this.setState({
+        pastToDo: newPastToDo
+      });
+    });
+  }
+
   newToDoPost = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const post = Object.assign({}, this.state.newToDo);
     post[event.target.name] = event.target.value;
     this.setState({
@@ -26,22 +40,32 @@ class App extends Component {
 
   formSubmitted = (event) => {
     event.preventDefault();
-    console.log(this.state.newToDo);
+    // console.log(this.state.newToDo);
     const newToDo = this.state.newToDo;
-    const toDo = [...this.state.pastToDo, {
+    const toDo = {
       title: newToDo.title,
       task: newToDo.category,
       category: newToDo.task
-    }];
+    };
+
+    dbRef.push(toDo);
 
     this.setState({
-      pastToDo: toDo,
       newToDo: {
         title: "",
         task: "",
         category: ""
       }
     })
+  }
+
+  completeTask = (event) => {
+    console.log("clicked");
+    console.log(event.target.id);
+    const firebaseKey = event.target.id;
+    const toDoRemove = firebase.database().ref(`${firebaseKey}`);
+    console.log(toDoRemove)
+    toDoRemove.remove();
   }
 
   render() {
@@ -67,9 +91,13 @@ class App extends Component {
             <input type="submit" value="Add Task" />
           </form>
           <ul>
-            {this.state.pastToDo.map((toDo, index) => {
+            {Object.entries(this.state.pastToDo).map((toDo, index) => {
+              // console.log(toDo[0]);
               return (
-                <li key={index}>{toDo.title}</li>
+                <li key={toDo[0]}>
+                {toDo[1].title}
+                <button id={toDo[0]} onClick={this.completeTask}>Completed</button>
+                </li>
               )
             })}
           </ul>
