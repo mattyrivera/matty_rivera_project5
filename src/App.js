@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from "./firebase";
+import Form from "./Form.js";
+import ToDo from "./ToDo.js";
 
 const dbRef = firebase.database().ref();
 
@@ -44,8 +46,8 @@ class App extends Component {
     const newToDo = this.state.newToDo;
     const toDo = {
       title: newToDo.title,
-      task: newToDo.category,
-      category: newToDo.task
+      task: newToDo.task,
+      category: newToDo.category
     };
 
     dbRef.push(toDo);
@@ -68,6 +70,13 @@ class App extends Component {
     toDoRemove.remove();
   }
 
+  hideToDos = (event) => {
+    console.log(event.target.name);
+    console.log(event.target);
+    const target = event.target.name;
+    event.target.innerHTML = `Show ${target}`
+  }
+
   render() {
     return (
       <div className="App">
@@ -75,32 +84,36 @@ class App extends Component {
           <h1>TO DO LIST</h1>
         </header>
         <main>
-          <form onSubmit={this.formSubmitted} className="new-task" action="">
-            <label htmlFor="title">Title:</label>
-            <input onChange={this.newToDoPost} type="text" id="title" name="title" value={this.state.newToDo.title} />
-            <label htmlFor="task">Task:</label>
-            <input onChange={this.newToDoPost} type="text" id="task" name="task" value={this.state.newToDo.task} />
-            <label htmlFor="category">Category:</label>
-            <select onChange={this.newToDoPost} name="category" id="category" value={this.state.newToDo.category} >
-              <option value="">--Choose an Option--</option>
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="School">School</option>
-              <option value="Other">Other</option>
-            </select>
-            <input type="submit" value="Add Task" />
-          </form>
-          <ul>
-            {Object.entries(this.state.pastToDo).map((toDo, index) => {
-              // console.log(toDo[0]);
-              return (
-                <li key={toDo[0]}>
-                {toDo[1].title}
-                <button id={toDo[0]} onClick={this.completeTask}>Completed</button>
-                </li>
-              )
-            })}
-          </ul>
+          <div className="wrapper">
+            <div className="buttonContainer">
+              <button name="Personal" onClick={this.hideToDos} >Hide Personal</button>
+              <button name="Work" onClick={this.hideToDos} >Hide Work</button>
+              <button name="School" onClick={this.hideToDos} >Hide School</button>
+              <button name="Other" onClick={this.hideToDos} >Hide Other</button>
+            </div>
+            <Form
+              submit={this.formSubmitted}
+              change={this.newToDoPost}
+              valTitle={this.state.newToDo.title}
+              valTask={this.state.newToDo.task}
+              valCat={this.state.newToDo.category}
+              />
+            <div className="toDoConatiner" >
+              {Object.entries(this.state.pastToDo).map((toDo, index) => {
+                // console.log(toDo[0]);
+                return (
+                  <ToDo
+                    key={toDo[0]}
+                    title={toDo[1].title}
+                    task={toDo[1].task}
+                    cat={toDo[1].category}
+                    click={this.completeTask}
+                    keyId={toDo[0]}
+                  />
+                )
+              })}
+            </div>
+          </div>
         </main>
       </div>
     );
