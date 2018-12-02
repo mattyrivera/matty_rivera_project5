@@ -96,51 +96,55 @@ class App extends Component {
 
   showForm = (event) => {
     const form = document.getElementById("newForm");
-    form.classList.add("form-show");
+    form.classList.add("formShow");
   }
 
   render() {
     return (
       <div className="App">
-        <header className="appHeader">
-          <div className="wrapper header-container">
-            <h1>TO DO LIST</h1>
-            <button onClick={this.showForm}><i class="fas fa-plus"></i>New Note</button>
-          </div>
-        </header>
-        <main>
-          <div className="wrapper">
-            <div className="buttonContainer">
-              <button name="Personal" onClick={this.hideToDos} >Hide Personal</button>
-              <button name="Work" onClick={this.hideToDos} >Hide Work</button>
-              <button name="School" onClick={this.hideToDos} >Hide School</button>
-              <button name="Other" onClick={this.hideToDos} >Hide Other</button>
-              <button name="Chores" onClick={this.hideToDos}>Hide Chores</button>
+        <body>
+          <header className="appHeader">
+            <div className="fixed">
+              <div className="wrapper headerContainer">
+                <h1>taskMaster</h1>
+                <button onClick={this.showForm}><i class="fas fa-plus"></i>New Note</button>
+              </div>
             </div>
-            <Form
-              submit={this.formSubmitted}
-              change={this.newToDoPost}
-              valTitle={this.state.newToDo.title}
-              valTask={this.state.newToDo.task}
-              valCat={this.state.newToDo.category}
-              />
-            <div className="toDoConatiner" >
-              {Object.entries(this.state.pastToDo).map((toDo, index) => {
-                // console.log(toDo[0]);
-                return (
-                  <ToDo
-                    key={toDo[0]}
-                    title={toDo[1].title}
-                    task={toDo[1].task}
-                    cat={toDo[1].category}
-                    click={this.completeTask}
-                    keyId={toDo[0]}
-                  />
-                )
-              })}
+          </header>
+          <main>
+            <div className="wrapper">
+              <Form
+                submit={this.formSubmitted}
+                change={this.newToDoPost}
+                valTitle={this.state.newToDo.title}
+                valTask={this.state.newToDo.task}
+                valCat={this.state.newToDo.category}
+                />
+              <div className="buttonContainer">
+                <button name="Personal" onClick={this.hideToDos} >Hide Personal</button>
+                <button name="Work" onClick={this.hideToDos} >Hide Work</button>
+                <button name="School" onClick={this.hideToDos} >Hide School</button>
+                <button name="Other" onClick={this.hideToDos} >Hide Other</button>
+                <button name="Chores" onClick={this.hideToDos}>Hide Chores</button>
+              </div>
+              <div className="toDoConatiner" >
+                {Object.entries(this.state.pastToDo).map((toDo, index) => {
+                  // console.log(toDo[0]);
+                  return (
+                    <ToDo
+                      key={toDo[0]}
+                      title={toDo[1].title}
+                      task={toDo[1].task}
+                      cat={toDo[1].category}
+                      click={this.completeTask}
+                      keyId={toDo[0]}
+                    />
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </body>
       </div>
     );
   }
