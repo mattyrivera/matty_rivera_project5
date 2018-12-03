@@ -1,5 +1,5 @@
 import React from 'react';
-
+//result of form submission (to-do cards)
 const todo = (props) => {
     return(
         <div className={`toDoCard ${props.cat}`}>

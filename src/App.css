@@ -8,10 +8,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 /* VARIABLES ----------------------- */
 
 :root {
-    --primary-color: #232323;
-    --accent-color: #fdc800;
+    --primary-color: #666;
+    --primary-color-rgba: rgba(102,102,102,1);
     --white-shade: #f8f8f8;
-    --background-color: #eaedf4;
+    /* --background-color: #eaedf4; */
     --primary-font: 'Roboto', sans-serif;
     --secondary-font: 'Poppins', sans-serif;
 }
@@ -23,10 +23,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 body{
     margin: 0;
     font-family: var(--primary-font);
-    color: #666;
+    color: var(--primary-color);
     font-size: 1.6rem;
     /* background: grey; */
-    background: #f8f8f8;
+    background: var(--white-shade);
 }
 
 html {
@@ -40,7 +40,7 @@ main {
 .wrapper {
     max-width: 1280px;
     width: 80%;
-    /* border: 2px solid tomato; */
+    border: 1px solid tomato;
     margin: 0 auto;
 }
 
@@ -48,7 +48,7 @@ main {
 
 
 header{
-    background-color: #666;
+    background-color: var(--primary-color);
     position: fixed;
     width: 100%;
     top: 0;
@@ -56,7 +56,7 @@ header{
 }
 
 header h1 {
-    color: #fff;
+    color: var(--white-shade);
     font-family: var(--secondary-font);
     font-size: 4rem;
     margin: 0;
@@ -70,12 +70,18 @@ header h1 {
 }
 
 .addTask {
-    color: #fff;
-    border: 2px solid #fff;
+    color: var(--white-shade);
+    border: 2px solid var(--white-shade);
     border-radius: 5px;
     background: rgba(0,0,0,0);
     padding: 5px 5px;
     font-size: 2rem;
+    transition: all 1s;
+}
+
+.addTask:hover {
+    background: var(--white-shade);
+    color: var(--primary-color);
 }
 
 .fa-plus {
@@ -107,12 +113,44 @@ header h1 {
     margin-right: 10px;
 }
 
+
+
 /* FORM INPUT Styles ------------------------------- */
-
-
 
 .formInput {
     margin: 0 5px;
+}
+
+.inputTitle, .inputTask, .inputCat {
+    border-radius: 5px;
+    border-style: none;
+    border: 2px solid var(--primary-color);
+}
+
+.inputTitle, .inputTask{
+    padding: 10px 20px;
+}
+
+.inputCat {
+    padding: 9px 20px;
+}
+
+.inputAdd {
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    /* border-style: none; */
+    background: var(--primary-color);
+    color: var(--white-shade);
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 1s;
+}
+
+.inputAdd:hover {
+    background: rgba(0,0,0,0);
+    color: var(--primary-color);
+
 }
 
 /* hide labels on form */
@@ -141,7 +179,7 @@ header h1 {
 
 
 .buttonContainer button {
-    color: #666;
+    color: var(--primary-color);
     border-style: none;
     border-radius: 5px;
     background: rgba(102,102,102,0.1);
@@ -153,7 +191,7 @@ header h1 {
 
 .buttonContainer button:hover {
     background: rgba(102,102,102,0.5);
-    color: #fff;
+    color: var(--white-shade);
 }
 
 .hide-cat {
@@ -166,8 +204,8 @@ header h1 {
 }
 
 .filterButton {
-    color: #666;
-    border: 2px solid #666;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     background: rgba(102,102,102, 0);
     padding: 5px 5px;
@@ -177,7 +215,7 @@ header h1 {
 }
 
 .filterButton:hover {
-    color: #fff;
+    color: var(--white-shade);
     background: rgba(102,102,102, 1);
 }
 
@@ -211,7 +249,7 @@ header h1 {
     background: rgba(248,248,248, 0.8);
     padding: 2px 6px;
     border-radius: 5px;
-    color: #666;
+    color: var(--primary-color);
     text-transform: lowercase;
 }
 
@@ -267,15 +305,31 @@ header h1 {
 }
 
 .fa-check-square {
-    color: #666;
+    color: var(--primary-color);
     margin: 20px 0 0 0;
 }
 
 /* RESPONSIVE MEDIA QUERIES------------------ */
 
+@media (max-width: 1030px) {
+    .formContainer.formShow {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1015px) {
+
+}
+
 @media (max-width: 915px) {
     .wrapper {
         width: 90%;
+    }
+
+    .formInput {
+        width: calc(50% - (15px/2));
+        margin-right: 5px;
+        margin: 5px auto;
     }
 }
 
@@ -310,12 +364,13 @@ header h1 {
         justify-content: center;
         align-items: center;
     }
-    
-    .formContainer.formShow {
-        margin-right: 0;
-    }
 
     .formInput {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .newTask {
         width: 100%;
     }
 

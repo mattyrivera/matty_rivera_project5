@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+//import from firebase -----------
 import firebase from "./firebase";
+//import components ---------
 import Form from "./Form.js";
 import ToDo from "./ToDo.js";
 
+//firebase reference
 const dbRef = firebase.database().ref();
 
+//initial state
 class App extends Component {
   constructor() {
     super();
@@ -20,8 +24,9 @@ class App extends Component {
     };
   }
 
+  //component ready
   componentDidMount() {
-    console.log("i mounted");
+    // console.log("i mounted");
     dbRef.on("value", (response) => {
       const newPastToDo = response.val() === null ? {} : response.val();
 
@@ -31,6 +36,7 @@ class App extends Component {
     });
   }
 
+  //function to create a new post
   newToDoPost = (event) => {
     // console.log(event.target.value);
     const post = Object.assign({}, this.state.newToDo);
@@ -40,6 +46,7 @@ class App extends Component {
     })
   }
 
+  //form submitted changes state and pushes to firebase
   formSubmitted = (event) => {
     event.preventDefault();
     // console.log(this.state.newToDo);
@@ -61,19 +68,21 @@ class App extends Component {
     })
   }
 
+  //function to add to-do item to firebase creating unique key
   completeTask = (event) => {
-    console.log("clicked");
-    console.log(event.target.id);
+    // console.log("clicked");
+    // console.log(event.target.id);
     const firebaseKey = event.target.id;
     const toDoRemove = firebase.database().ref(`${firebaseKey}`);
     console.log(toDoRemove)
     toDoRemove.remove();
   }
 
+  //function to hide/show to-do cards
   hideToDos = (event) => {
     // console.log(event.target.name);
-    // console.log(event.target);
     const target = event.target.name;
+    // console.log(event.target);
     const button = event.target;
     console.log(button.classList);
 
@@ -94,6 +103,7 @@ class App extends Component {
     }
   }
 
+  //function drop-down form
   showForm = (event) => {
     const form = document.getElementById("newForm");
     form.classList.add("formShow");
@@ -115,6 +125,7 @@ class App extends Component {
     }
   }
 
+  //Rendering App to DOM
   render() {
     return (
       <div className="App">
