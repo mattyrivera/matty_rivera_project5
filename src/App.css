@@ -48,7 +48,7 @@ main {
 
 
 header{
-    background-color: #666666;
+    background-color: #666;
     position: fixed;
     width: 100%;
     top: 0;
@@ -72,9 +72,14 @@ header h1 {
 .addTask {
     color: #fff;
     border: 2px solid #fff;
+    border-radius: 5px;
     background: rgba(0,0,0,0);
-    padding: 10px 30px;
-    
+    padding: 5px 5px;
+    font-size: 2rem;
+}
+
+.fa-plus {
+    margin: 0 5px;
 }
 
 /* FORM Styles ------------------------- */
@@ -95,12 +100,16 @@ header h1 {
     height: auto;
     top: 0;
     opacity: 1;
-    padding: 25px 0;
+    padding: 25px 0 10px 0;
 }
 
 .formContainer.formShow {
     margin-right: 10px;
 }
+
+/* FORM INPUT Styles ------------------------------- */
+
+
 
 .formInput {
     margin: 0 5px;
@@ -127,20 +136,50 @@ header h1 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 12px;
 }
+
 
 .buttonContainer button {
     color: #666;
-    border: 2px solid #666;
-    background: rgba(0,0,0,0);
+    border-style: none;
+    border-radius: 5px;
+    background: rgba(102,102,102,0.1);
     padding: 5px 5px;
     margin: 0 5px 5px;
+    letter-spacing: 1px;
+    transition: 0.5s;
 }
 
 .buttonContainer button:hover {
-    color: red;
+    background: rgba(102,102,102,0.5);
+    color: #fff;
 }
 
+.hide-cat {
+    font-weight: 700;
+}
+
+.buttonFilterContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.filterButton {
+    color: #666;
+    border: 2px solid #666;
+    border-radius: 5px;
+    background: rgba(102,102,102, 0);
+    padding: 5px 5px;
+    margin: 2px 0 12px 0;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+.filterButton:hover {
+    color: #fff;
+    background: rgba(102,102,102, 1);
+}
 
 /* TASKS Styles --------------------------------- */
 
@@ -192,22 +231,27 @@ header h1 {
 
 .School {
     background: #FADEE1;
+    /* background: #96DFD8; */
 }
 
 .Personal {
     background: #FAF1D6;
+    /* background: #AEE6CB; */
 }
 
 .Work {
     background: #E1F7E7;
+    /* background: #CDEEF3; */
 }
 
 .Other {
     background: #D9F1F1;
+    /* background: #DAF1DE; */
 }
 
 .Chores {
     background: #B6E3E9;
+    /* background: #D6E9AA; */
 }
 
 .completedTask {
@@ -229,20 +273,50 @@ header h1 {
 
 /* RESPONSIVE MEDIA QUERIES------------------ */
 
-@media (max-width: 480px) {
-    main {
-        margin-top: 65px;
-    }
-
+@media (max-width: 915px) {
     .wrapper {
         width: 90%;
     }
+}
 
+@media (max-width: 850px) {
+    .toDoCard {
+        width: calc(50% - (20px / 2));
+        margin-right: 10px;  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 13px -6px rgba(102,102,102,0.5);
+    }
+}
+
+
+@media (max-width: 500px) {
+    main {
+        margin-top: 65px;
+    }
+    
+    .headerContainer{
+        padding-right: 0;
+    }
+    
     .formContainer form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    
+    .formContainer.formShow {
+        margin-right: 0;
+    }
+
+    .formInput {
+        width: 100%;
     }
 
     .buttonContainer button {
@@ -262,6 +336,6 @@ header h1 {
 
 @media (max-width: 380px) {
     main {
-        margin-top: 80px;
+        margin-top: 60px;
     }
 }

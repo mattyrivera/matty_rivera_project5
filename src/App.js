@@ -123,7 +123,7 @@ class App extends Component {
             <div className="fixed">
               <div className="wrapper headerContainer">
                 <h1>taskMaster</h1>
-                <button className="addTask" onClick={this.showForm}><i className="fas fa-plus"></i> New Task</button>
+                <button className="addTask" onClick={this.showForm}><i className="fas fa-plus"></i></button>
               </div>
             </div>
           </header>
@@ -143,8 +143,8 @@ class App extends Component {
                 <button name="Personal" onClick={this.hideToDos} >Hide Personal</button>
                 <button name="Work" onClick={this.hideToDos} >Hide Work</button>
                 <button name="School" onClick={this.hideToDos} >Hide School</button>
-                <button name="Other" onClick={this.hideToDos} >Hide Other</button>
                 <button name="Chores" onClick={this.hideToDos}>Hide Chores</button>
+                <button name="Other" onClick={this.hideToDos} >Hide Other</button>
               </div>
               <div className="toDoContainer" >
                 {Object.entries(this.state.pastToDo).map((toDo, index) => {

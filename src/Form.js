@@ -14,9 +14,9 @@ const form = (props) => {
                 <select className="formInput" onChange={props.change} name="category" id="category" value={props.valCat} required >
                     <option value="">-- Select Category --</option>
                     <option value="Personal">Personal</option>
-                    <option value="Chores">Chores</option>
                     <option value="Work">Work</option>
                     <option value="School">School</option>
+                    <option value="Chores">Chores</option>
                     <option value="Other">Other</option>
                 </select>
 
