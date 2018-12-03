@@ -99,16 +99,19 @@ class App extends Component {
     form.classList.add("formShow");
   }
 
+  //filter button functionality hide/show filters
   showFilters = (event) => {
     const showFilters = document.getElementById("buttonContainer");
     const filterButton = event.target;
 
-    for (let i = 0; i < filterButton.classList.length; i++){
-      if(filterButton.classList[i] === "activeFilter"){
-        filterButton.classList.remove("activeFilter");
-      }else {
-        filterButton.classList.add("activeFilter");
-      }
+    filterButton.classList.toggle("activeFilter");
+
+    if(filterButton.classList.contains("activeFilter")){
+      showFilters.style.display = "flex";
+      filterButton.innerHTML = "Hide Filters";
+    } else {
+      showFilters.style.display = "none";
+      filterButton.innerHTML = "Show Filters";
     }
   }
 
@@ -120,7 +123,7 @@ class App extends Component {
             <div className="fixed">
               <div className="wrapper headerContainer">
                 <h1>taskMaster</h1>
-                <button onClick={this.showForm}><i className="fas fa-plus"></i>New Note</button>
+                <button className="addTask" onClick={this.showForm}><i className="fas fa-plus"></i> New Task</button>
               </div>
             </div>
           </header>

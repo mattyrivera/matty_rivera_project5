@@ -5,11 +5,13 @@ const form = (props) => {
         <div id="newForm" className="formContainer">
             <form onSubmit={props.submit} className="new-task" action="">
                 <label htmlFor="title" className="hiddenLabel">Title:</label>
-                <input onChange={props.change} type="text" id="title" name="title" value={props.valTitle} placeholder="Title" />
+                <input className="formInput" onChange={props.change} type="text" id="title" name="title" value={props.valTitle} placeholder="Title" />
+
                 <label htmlFor="task" className="hiddenLabel">Task:</label>
-                <input onChange={props.change} type="text" id="task" name="task" value={props.valTask} required placeholder="Task" maxLength="1000" />
+                <input className="formInput" onChange={props.change} type="text" id="task" name="task" value={props.valTask} required placeholder="Task" maxLength="1000" />
+
                 <label htmlFor="category" className="hiddenLabel">Category:</label>
-                <select onChange={props.change} name="category" id="category" value={props.valCat} required >
+                <select className="formInput" onChange={props.change} name="category" id="category" value={props.valCat} required >
                     <option value="">-- Select Category --</option>
                     <option value="Personal">Personal</option>
                     <option value="Chores">Chores</option>
@@ -17,7 +19,8 @@ const form = (props) => {
                     <option value="School">School</option>
                     <option value="Other">Other</option>
                 </select>
-                <input type="submit" value="Add Task" />
+
+                <input className="formInput" type="submit" value="Add Task" />
             </form>
         </div>
     )

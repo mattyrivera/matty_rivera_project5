@@ -23,6 +23,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 body{
     margin: 0;
     font-family: var(--primary-font);
+    color: #666;
+    font-size: 1.6rem;
     /* background: grey; */
 }
 
@@ -45,7 +47,7 @@ main {
 
 
 header{
-    background-color: tomato;
+    background-color: #666666;
     position: fixed;
     width: 100%;
     top: 0;
@@ -55,6 +57,8 @@ header{
 header h1 {
     color: #fff;
     font-family: var(--secondary-font);
+    font-size: 4rem;
+    margin: 0;
 }
 
 .headerContainer{
@@ -64,11 +68,12 @@ header h1 {
     padding-right: 10px;
 }
 
-header button {
+.addTask {
     color: #fff;
     border: 2px solid #fff;
     background: rgba(0,0,0,0);
     padding: 10px 30px;
+    
 }
 
 /* FORM Styles ------------------------- */
@@ -90,11 +95,14 @@ header button {
     top: 0;
     opacity: 1;
     padding: 25px 0;
-    /* background: papayawhip; */
 }
 
 .formContainer.formShow {
     margin-right: 10px;
+}
+
+.formInput {
+    margin: 0 5px;
 }
 
 /* hide labels on form */
@@ -121,8 +129,8 @@ header button {
 }
 
 .buttonContainer button {
-    color: pink;
-    border: 2px solid pink;
+    color: #666;
+    border: 2px solid #666;
     background: rgba(0,0,0,0);
     padding: 10px 30px;
     margin: 0 15px 15px;
@@ -143,8 +151,7 @@ header button {
 
 .toDoCard {
     width: calc(33.3% - (30px / 3));
-    margin-right: 10px;
-    background-color: rgb(202, 202, 247);    
+    margin-right: 10px;  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,28 +165,61 @@ header button {
     display: none;
 }
 
+.catName {
+    font-size: 1.4rem;
+    background: rgba(102,102,102,0.3);
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: lowercase;
+}
+
+.toDoTitle {
+    /* font-size: 1.6rem; */
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 20px 0 0 0;
+    /* color: #666; */
+}
+
+.toDoTask {
+    line-height: 1.3;
+
+}
+
 /* card colors */
 
 .School {
-    background: pink;
+    background: #FADEE1;
 }
 
 .Personal {
-    background: rgb(177, 221, 221);
+    background: #FAF1D6;
 }
 
 .Work {
-    background: rgb(243, 243, 203);
+    background: #E1F7E7;
 }
 
 .Other {
-    background: rgb(191, 224, 191);
+    background: #D9F1F1;
 }
 
 .Chores {
-    background: rgb(240, 201, 240);
+    background: #B6E3E9;
 }
 
+.completedTask {
+    background: rgba(0,0,0,0);
+    font-size: 2rem;
+    border: none;
+}
+
+.fa-check-square {
+    color: #666;
+}
+
+/* RESPONSIVE MEDIA QUERIES------------------ */
 
 @media (max-width: 350px) {
     /* main {

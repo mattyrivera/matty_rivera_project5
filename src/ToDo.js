@@ -4,9 +4,9 @@ const todo = (props) => {
     return(
         <div className={`toDoCard ${props.cat}`}>
             <p className="catName">{props.cat}</p>
-            <h3>{props.title}</h3>
-            <p>{props.task}</p>
-            <button id={props.keyId} onClick={props.click}><i class="far fa-trash-alt"></i></button>
+            <h3 className="toDoTitle">{props.title}</h3>
+            <p classsName="toDoTask">{props.task}</p>
+            <button id={props.keyId} onClick={props.click} className="completedTask"><i class="fas fa-check-square"></i></button>
         </div>
     )
 }
