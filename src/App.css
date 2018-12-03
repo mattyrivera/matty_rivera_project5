@@ -26,6 +26,7 @@ body{
     color: #666;
     font-size: 1.6rem;
     /* background: grey; */
+    background: #f8f8f8;
 }
 
 html {
@@ -132,8 +133,8 @@ header h1 {
     color: #666;
     border: 2px solid #666;
     background: rgba(0,0,0,0);
-    padding: 10px 30px;
-    margin: 0 15px 15px;
+    padding: 5px 5px;
+    margin: 0 5px 5px;
 }
 
 .buttonContainer button:hover {
@@ -159,6 +160,7 @@ header h1 {
     padding: 20px 15px;
     margin-bottom: 10px;
     border-radius: 5px;
+    box-shadow: 2px 2px 13px -6px rgba(102,102,102,0.5);
 }
 
 .hide {
@@ -167,19 +169,18 @@ header h1 {
 
 .catName {
     font-size: 1.4rem;
-    background: rgba(102,102,102,0.3);
+    background: rgba(248,248,248, 0.8);
     padding: 2px 6px;
     border-radius: 5px;
-    color: #fff;
+    color: #666;
     text-transform: lowercase;
 }
 
 .toDoTitle {
-    /* font-size: 1.6rem; */
     text-transform: uppercase;
     font-weight: 700;
     margin: 20px 0 0 0;
-    /* color: #666; */
+    color: #232323;
 }
 
 .toDoTask {
@@ -213,18 +214,29 @@ header h1 {
     background: rgba(0,0,0,0);
     font-size: 2rem;
     border: none;
+    color: rgba(102,102,102,0.5);
+    transition: color 0.5s;
+}
+
+.completedTask:hover {
+    color: rgba(102,102,102,1);
 }
 
 .fa-check-square {
     color: #666;
+    margin: 20px 0 0 0;
 }
 
 /* RESPONSIVE MEDIA QUERIES------------------ */
 
-@media (max-width: 350px) {
-    /* main {
-        margin-top: 35px;
-    } */
+@media (max-width: 480px) {
+    main {
+        margin-top: 65px;
+    }
+
+    .wrapper {
+        width: 90%;
+    }
 
     .formContainer form {
         display: flex;
@@ -233,6 +245,23 @@ header h1 {
         align-items: center;
     }
 
+    .buttonContainer button {
+        margin: 0 0 5px 0;
+        width: 100%;
+    }
 
+    .toDoCard {
+        width: 100%;
+        margin-right: 0;  
+    }
 
+    .filterButton {
+        width: 100%
+    }
+}
+
+@media (max-width: 380px) {
+    main {
+        margin-top: 80px;
+    }
 }
